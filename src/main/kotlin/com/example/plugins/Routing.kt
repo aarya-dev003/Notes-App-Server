@@ -2,6 +2,7 @@ package com.example.plugins
 
 import com.example.auth.JwtService
 import com.example.repository.Repo
+import com.example.routes.NoteRoute
 import com.example.routes.signIn
 import com.example.routes.signUp
 import io.ktor.server.application.*
@@ -24,6 +25,7 @@ fun Application.configureRouting(
         coroutineScope.launch {
             signUp(db, jwtService, hashFunction)
             signIn(db,jwtService,hashFunction)
+            NoteRoute(db,hashFunction)
         }
     }
 }

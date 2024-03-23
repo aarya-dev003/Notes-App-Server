@@ -1,11 +1,13 @@
 package com.example.repository
 
+import com.example.data.Table.NoteTable
 import com.example.data.Table.UserTable
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.Schema
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.sql.Connection
@@ -17,6 +19,7 @@ object DatabaseFactory {
 
         transaction {
             SchemaUtils.create(UserTable)
+            SchemaUtils.create(NoteTable)
         }
     }
 
